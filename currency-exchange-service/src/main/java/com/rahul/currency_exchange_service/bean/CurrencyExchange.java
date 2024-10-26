@@ -7,7 +7,7 @@ public class CurrencyExchange {
     private String from;
     private String to;
     private BigDecimal conversionMultiple;
-    private String environment;
+    private String environment;                  //this is used to save the port
 
     public CurrencyExchange() {
 

@@ -10,9 +10,12 @@ import java.math.BigDecimal;
 @RestController
 public class CurrencyExchangeController {
 
+
     @GetMapping("currency-exchange/from/{from}/to/{to}")
     public CurrencyExchange getExchangeValue(@PathVariable String from, @PathVariable String to) {
-        return new CurrencyExchange(1001L,from,to, BigDecimal.valueOf(80));
+        CurrencyExchange thecurrencyExchange = new CurrencyExchange(1001L, from, to, BigDecimal.valueOf(80));
+        thecurrencyExchange.setEnvironment("8080");
+        return thecurrencyExchange;
     }
 
 }
