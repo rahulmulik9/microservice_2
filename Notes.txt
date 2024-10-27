@@ -31,3 +31,7 @@ e.g. ResponseEntity<CurrencyConversion> responseEntity
   Dependency is spring-cloud-starter-netflix-eureka-server
 
 8) In Conversion and Exchanger dependency of client "spring-cloud-starter-config" replaced with "spring-cloud-starter-netflix-eureka-client"
+ Also add eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka in properties in Conversion and Exchanger so that it connect with proper eureka it there are multiple eureka server
+
+8) Change the proxy annotation in exchanger from  @FeignClient(name="currency-exchange", url="localhost:8000") to @FeignClient(name="currency-exchange").
+ It will directly pick up URL form the name itself
