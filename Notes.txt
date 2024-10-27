@@ -24,4 +24,5 @@ e.g. ResponseEntity<CurrencyConversion> responseEntity
 
 
 6) It is difficult for each time to set the URL as mentioned in step 4 or step 5
-that why we use Naming server or Service Registry
+   that why we use Naming server or Service Registry.
+   a)Naming server provide the instances , and load balance between them
