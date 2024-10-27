@@ -26,3 +26,8 @@ e.g. ResponseEntity<CurrencyConversion> responseEntity
 6) It is difficult for each time to set the URL as mentioned in step 4 or step 5
    that why we use Naming server or Service Registry.
    a)Naming server provide the instances , and load balance between them
+
+7) Added new model naming-server with new module
+  Dependency is spring-cloud-starter-netflix-eureka-server
+
+8) In Conversion and Exchanger dependency of client "spring-cloud-starter-config" replaced with "spring-cloud-starter-netflix-eureka-client"
