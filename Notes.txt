@@ -1,0 +1,27 @@
+
+
+
+4) Currency conversion service call currency exchange service using URL and fetch data
+e.g. ResponseEntity<CurrencyConversion> responseEntity
+                = new RestTemplate() .getForEntity("http://localhost:8001/currency-exchange/from/{from}/to/{to}", CurrencyConversion.class, uriVariables);
+
+5)This calling can be handle using spring cloud feign
+  a) Create interface
+    @FeignClient(name="currency-exchange", url="localhost:8000")
+    //@FeignClient(name="currency-exchange")
+    public interface CurrencyExchangeProxy {
+
+        @GetMapping("/currency-exchange/from/{from}/to/{to}")
+        public CurrencyConversion retrieveExchangeValue(
+                @PathVariable String from,
+                @PathVariable String to);
+
+    }
+
+  b) This can be used to fetch data in controller
+      CurrencyConversion currencyConversion = proxy.retrieveExchangeValue(from, to);
+      where proxy is object of above created interface
+
+
+6) It is difficult for each time to set the URL as mentioned in step 4 or step 5
+that why we use Naming server or Service Registry
