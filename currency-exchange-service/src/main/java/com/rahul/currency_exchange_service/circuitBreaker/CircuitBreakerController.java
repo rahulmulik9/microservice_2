@@ -1,6 +1,7 @@
 package com.rahul.currency_exchange_service.circuitBreaker;
 
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -17,8 +18,9 @@ public class CircuitBreakerController {
 
     @GetMapping("/sample-api")
     //@Retry(name="sample-api", fallbackMethod="hardCodedResponse")
-    @CircuitBreaker(name = "default", fallbackMethod = "hardcodedResponse")
-    @RateLimiter(name="default")               //this allow only how many request should be permitted in given time
+//    @CircuitBreaker(name = "default", fallbackMethod = "hardcodedResponse")
+//    @RateLimiter(name="default")               //this allow only how many request should be permitted in given time
+    @Bulkhead(name="sample-api")    //maximum concurrent call that can be permitted
     public String getSimpleAPI() {
         logger.info("Sample api call received");
         ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",String.class);
