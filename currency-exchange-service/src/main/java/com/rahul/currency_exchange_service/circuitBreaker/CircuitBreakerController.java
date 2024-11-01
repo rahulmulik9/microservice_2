@@ -13,8 +13,8 @@ import org.slf4j.LoggerFactory;
 public class CircuitBreakerController {
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
 
-    @GetMapping("/simple-api")
-    @Retry(name="simple-api", fallbackMethod="hardCodedResponse")
+    @GetMapping("/sample-api")
+    @Retry(name="sample-api", fallbackMethod="hardCodedResponse")
     public String getSimpleAPI() {
         logger.info("Sample api call received");
         ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",String.class);
