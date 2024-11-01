@@ -18,7 +18,7 @@ public class CircuitBreakerController {
     @GetMapping("/sample-api")
     //@Retry(name="sample-api", fallbackMethod="hardCodedResponse")
     @CircuitBreaker(name = "default", fallbackMethod = "hardcodedResponse")
-    @RateLimiter(name="default")               //this allow only in 10 se only allow 100 request
+    @RateLimiter(name="default")               //this allow only how many request should be permitted in given time
     public String getSimpleAPI() {
         logger.info("Sample api call received");
         ResponseEntity<String> forEntity = new RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",String.class);
