@@ -29,7 +29,7 @@ public class ApiGatewayConfiguration {
                                 .addRequestParameter("Param", "MyValue"))
                         .uri("http://httpbin.org:80"))
                 .route(p -> p.path("/currency-exchange/**")      //request coming for currency-exchange
-                        .uri("lb://currency-exchange"))                   //load balance and currency-exchange
+                        .uri("lb://currency-exchange"))                   //lb->load balance and currency-exchange
                 .route(p -> p.path("/currency-conversion/**")
                         .uri("lb://currency-conversion"))
                 .route(p -> p.path("/currency-conversion-feign/**")
